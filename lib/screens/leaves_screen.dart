@@ -25,6 +25,12 @@ class LeavesScreen extends StatelessWidget {
       body: BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) async {
           if (BlocProvider.of<AppCubit>(context).requirLogin) {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const LogInScreen(),
+                ));
+
             await showDialog(
                 context: context,
                 builder: (context) {
@@ -35,11 +41,7 @@ class LeavesScreen extends StatelessWidget {
                       TextButton(
                           child: Text("OK"),
                           onPressed: () {
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const LogInScreen(),
-                                ));
+                            Navigator.of(context).pop();
                           })
                     ],
                   );
