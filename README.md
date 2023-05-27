@@ -11,18 +11,25 @@ git clone https://github.com/rouaah/hnndes-task.git
 
 run flutter pub get in order to install project's used packages
  
-### Main Features 📚
-flutter
-bloc/cubit state management
-dio
-json serialization
-rest apis
-SharedPreferences
+## Main Features 📚
+1- flutter
 
-#### App architecture
-logic where cubit and states are implemented
-models classes to save data from json 
-screens contain the app screens 
-components reusable widgets used in all the app
+2- bloc/cubit state management
 
-##### Screenshots
+3- dio
+
+4- json serialization
+
+5- rest apis
+
+6- SharedPreferences
+
+## App architecture
+1- logic where cubit and states are implemented
+
+2- models classes to save data from json 
+
+3- screens contain the app screens 
+
+4- components reusable widgets used in all the app
+
