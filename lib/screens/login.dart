@@ -120,7 +120,7 @@ class LogInScreen extends StatelessWidget {
                               bool isLoggedIn = await authCubit.login();
                               print(isLoggedIn);
                               if (isLoggedIn) {
-                                Navigator.push(
+                                Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>

@@ -27,6 +27,7 @@ class AppCubit extends Cubit<AppStates>{
   bool isLoadMoreRunning=false;
   bool isErrorFechingNewData=false;
   bool isError=false;
+  bool requirLogin=false;
 
   List<Leave> leaves=[];
 
@@ -105,7 +106,7 @@ class AppCubit extends Cubit<AppStates>{
     }
   }
 
-  Future<void> getLeavesListMoreLoad(int companyId , int departmentId , int employeeId,BuildContext context) async {
+  Future<void> getLeavesListMoreLoad(int companyId , int departmentId , int employeeId,) async {
       if(hasNextPage==true && isLoadingFirstLeaves==false && isLoadMoreRunning==false && scrollController.position.extentAfter<300){
       isLoadMoreRunning = true;
       emit(AppRefreshUIState());
@@ -144,15 +145,10 @@ class AppCubit extends Cubit<AppStates>{
           isLoadMoreRunning = false;
           emit(AppRefreshUIState());
         }
-        else if(response.statusCode==401 || response.statusCode==400){
+        else if(response.statusCode==401 ){
           isLoadMoreRunning=false;
+          requirLogin=true;
           emit(AppRefreshUIState());
-          Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>
-                const LogInScreen(),
-              ));
         }
         else{
           isErrorFechingNewData=true;
